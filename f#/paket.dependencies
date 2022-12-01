@@ -1,0 +1,9 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+nuget coverlet.collector
+nuget FSharp.Core content: none
+nuget FSharpPlus
+nuget FsUnit.xUnit
+nuget Microsoft.NET.Test.Sdk
+nuget xunit.runner.visualstudio
