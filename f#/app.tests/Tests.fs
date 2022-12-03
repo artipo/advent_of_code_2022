@@ -30,7 +30,6 @@ module Day01 =
         calories
         |> parseCalories
         |> elfWithMostCalories
-        |> snd
         |> should equal 24000u
 
     [<Fact>]
@@ -56,5 +55,71 @@ module Day01 =
         calories
         |> parseCalories
         |> threeElfsWithMostCalories
-        |> Seq.sumBy snd
+        |> Seq.sum
         |> should equal 45000u
+
+module Day02 =
+
+    open App.Solutions.Day02
+
+    [<Fact>]
+    let ``day 02, puzzle 1`` () =
+        let rounds =
+            [
+                "A Y"
+                "B X"
+                "C Z"
+            ]
+
+        rounds
+        |> evaluateShapeStrategyPoints
+        |> should equal 15
+
+    [<Fact>]
+    let ``day 02, puzzle 2`` () =
+        let rounds =
+            [
+                "A Y"
+                "B X"
+                "C Z"
+            ]
+
+        rounds
+        |> evaluateResultStrategyPoints
+        |> should equal 12
+
+module Day03 =
+
+    open App.Solutions.Day03
+
+    [<Fact>]
+    let ``day 03, puzzle 1`` () =
+        let rucksacks =
+            [
+                "vJrwpWtwJgWrhcsFMMfFFhFp"
+                "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"
+                "PmmdzqPrVvPwwTWBwg"
+                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn"
+                "ttgJtRGJQctTZtZT"
+                "CrZsJsPPZsGzwwsLwLmpwMDw"
+            ]
+
+        rucksacks
+        |> evaluateTotalPriority_1
+        |> should equal 157
+
+    [<Fact>]
+    let ``day 03, puzzle 2`` () =
+        let rucksacks =
+            [
+                "vJrwpWtwJgWrhcsFMMfFFhFp"
+                "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"
+                "PmmdzqPrVvPwwTWBwg"
+                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn"
+                "ttgJtRGJQctTZtZT"
+                "CrZsJsPPZsGzwwsLwLmpwMDw"
+            ]
+
+        rucksacks
+        |> evaluateTotalPriority_2
+        |> should equal 70
