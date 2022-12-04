@@ -123,3 +123,39 @@ module Day03 =
         rucksacks
         |> evaluateTotalPriority_2
         |> should equal 70
+
+module Day04 =
+
+    open App.Solutions.Day04
+
+    [<Fact>]
+    let ``day 04, puzzle 1`` () =
+        let pairs =
+            [
+                "2-4,6-8"
+                "2-3,4-5"
+                "5-7,7-9"
+                "2-8,3-7"
+                "6-6,4-6"
+                "2-6,4-8"
+            ]
+
+        pairs
+        |> countEachOtherSubSet
+        |> should equal 2
+
+    [<Fact>]
+    let ``day 04, puzzle 2`` () =
+        let pairs =
+            [
+                "2-4,6-8"
+                "2-3,4-5"
+                "5-7,7-9"
+                "2-8,3-7"
+                "6-6,4-6"
+                "2-6,4-8"
+            ]
+
+        pairs
+        |> countOverlapping
+        |> should equal 4

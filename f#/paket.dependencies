@@ -5,5 +5,6 @@ nuget coverlet.collector
 nuget FSharp.Core content: none
 nuget FSharpPlus
 nuget FsUnit.xUnit
+nuget FsToolkit.ErrorHandling
 nuget Microsoft.NET.Test.Sdk
 nuget xunit.runner.visualstudio
