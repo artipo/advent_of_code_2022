@@ -14,6 +14,7 @@ module Dictionary =
 module File =
     let readAllLines filePath = File.ReadAllLines(filePath)
     let readLines filePath = File.ReadLines(filePath)
+    let readAllText filePath = File.ReadAllText(filePath)
 
 module Int =
     let parseBinary b = Convert.ToInt32(b, 2)

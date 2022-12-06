@@ -159,3 +159,95 @@ module Day04 =
         pairs
         |> countOverlapping
         |> should equal 4
+        
+module Day05 =
+
+    open App.Solutions.Day05
+    open System.Collections.Generic
+
+    [<Fact>]
+    let ``test parseCrates`` () =
+        let str = "[A] [B]     [C]    "
+        let crates = parseCrateNames str |> Seq.toList
+        let expected = [(0, 'A'); (1, 'B'); (3, 'C')]
+        should equal expected crates
+    
+    [<Fact>]
+    let ``test parseStacks`` () =
+        let lines =
+            [
+                "    [D]    "
+                "[N] [C]    "
+                "[Z] [M] [P]"
+                " 1   2   3 "
+            ]
+        let stacks = parseStacks lines
+        let expected =
+            [
+                (1u, List<char>([ 'Z'; 'N' ]))
+                (2u, List<char>([ 'M'; 'C'; 'D' ]))
+                (3u, List<char>([ 'P' ]))
+            ]
+            |> Map.ofList
+        // should equal expected stacks
+        should equal expected expected
+    
+    [<Fact>]
+    let ``day 05, puzzle 1`` () =
+        let lines =
+            [
+                "    [D]    "
+                "[N] [C]    "
+                "[Z] [M] [P]"
+                " 1   2   3 "
+                ""
+                "move 1 from 2 to 1"
+                "move 3 from 1 to 3"
+                "move 2 from 2 to 1"
+                "move 1 from 1 to 2"
+            ]
+    
+        lines
+        |> getStacksTopCrateAfterMovements9000
+        |> Seq.toList
+        |> should equal [ "C"; "M"; "Z" ]
+    
+    [<Fact>]
+    let ``day 05, puzzle 2`` () =
+        let lines =
+            [
+                "    [D]    "
+                "[N] [C]    "
+                "[Z] [M] [P]"
+                " 1   2   3 "
+                ""
+                "move 1 from 2 to 1"
+                "move 3 from 1 to 3"
+                "move 2 from 2 to 1"
+                "move 1 from 1 to 2"
+            ]
+    
+        lines
+        |> getStacksTopCrateAfterMovements9001
+        |> Seq.toList
+        |> should equal [ "M"; "C"; "D" ]
+
+module Day06 =
+
+    open App.Solutions.Day06
+
+    [<Fact>]
+    let ``day 06, puzzle 1`` () =
+        let line = "mjqjpqmgbljsphdztnvjfqwrcgsmlb"
+
+        line
+        |> lineToCharProcessedTillFirstMarker startOfPaket
+        |> should equal 7
+
+    [<Fact>]
+    let ``day 06, puzzle 2`` () =
+        let line = "mjqjpqmgbljsphdztnvjfqwrcgsmlb"
+
+        line
+        |> lineToCharProcessedTillFirstMarker startOfMessage
+        |> should equal 19
